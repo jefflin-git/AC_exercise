@@ -13,13 +13,16 @@ app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 
 // routes setting
+//根目錄
 app.get('/', (req, res) => {
   res.render('index', { restaurant: restaurantList.results })
 })
+//分頁
 app.get('/restaurants/:restaurant_id', (req, res) => {
   const showRestaurant = restaurantList.results.find(restaurant => restaurant.id.toString() === req.params.restaurant_id)
   res.render('show', { restaurant: showRestaurant })
 })
+//搜尋
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
   const searchRestaurant = restaurantList.results.filter(restaurant => restaurant.name.toLowerCase().includes(keyword.toLowerCase()))
