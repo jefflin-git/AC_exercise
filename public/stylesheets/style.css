@@ -78,6 +78,23 @@ header {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+.edit-container {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.container {
+  width:850px;
+}
+
+.operate {
+  display: flex;
+  justify-content: space-around;
+}
+
+.operate  a{
+  display: block;
+}
 @media screen and (max-width: 992px) {
   
   .card img{

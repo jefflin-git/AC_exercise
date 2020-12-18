@@ -13,16 +13,28 @@
           </div>
         </div>
       </form>
+
     </div>
   </div>
 </div>
+
+
+
+
 <!-- restaurant list -->
 <div class="container mt-5">
+  <div class="row mb-3">
+    <div class="col-4">
+      <div class="operate">
+        <a class="btn btn-success" href="/new" role="button">新增餐廳</a>
+      </div>
+    </div>
+  </div>
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
       <div class="card-columns">
         {{#each restaurant}}
-        <a href="/restaurants/{{this.id}}" class="text-secondary">
+        <a href="/restaurants/{{this._id}}" class="text-secondary">
           <div class="card mb-3">
             <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
             <div class="card-body p-3">
@@ -31,17 +43,44 @@
               <div class="restaurant-category mb-1">
                 <i class="fas fa-utensils pr-2"></i> {{this.category}}
               </div>
-
-              <span class="badge badge-pill badge-danger font-weight-normal">
-                {{this.rating}}
-                <i class="fas fa-star fa-xs"></i>
-              </span>
-
-            </div>
-          </div>
         </a>
-        {{/each}}
+        <div>
+          <span class="badge badge-pill badge-info font-weight-normal">
+            {{this.rating}}
+            <i class="fas fa-star fa-xs"></i>
+          </span>
+          <a href="/restaurants/{{this._id}}/edit"><span
+              class="badge badge-pill badge-success font-weight-normal">修改</span></a>
+          <button type="button" data-toggle="modal" data-target="#delete-modal-{{this._id}}"
+            style="background: transparent; border:none; padding: 0px; outline: none; cursor: pointer"><span
+              class="badge badge-pill badge-danger font-weight-normal">X</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    {{/each}}
+  </div>
+</div>
+</div>
+</div>
+
+{{!-- delete modal --}}
+{{#each restaurant}}
+<div class="modal fade" id="delete-modal-{{this._id}}" data-backdrop="static" tabindex="-1" data-keyboard="false"
+  aria-labelledby="delete-modal-{{this._id}}-Label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        要刪除 <strong>{{this.name}}</strong> 嗎？
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">取消</button>
+        <form action="/restaurants/{{this._id}}/delete" method="POST">
+          <button type="submit" class="btn btn-danger">確認刪除</button>
+        </form>
       </div>
     </div>
   </div>
 </div>
+{{/each}}

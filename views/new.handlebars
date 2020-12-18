@@ -1,0 +1,78 @@
+<h1 class="mb-1 restaurant-show-title">新增餐廳資訊</h1>
+<div class="edit-container">
+  <div class="row">
+    <div class="col-2">
+      <div class="operate">
+        <a href="/"><button class="btn btn-danger">返回清單</button></a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="edit-zone">
+        <form action="/save" method="POST">
+          <div class="row mt-3">
+            <div class="col-5">
+              <label for="inputState">Restaurant name</label>
+              <input type="text" class="form-control" placeholder="餐廳名稱" name="name" required>
+            </div>
+            <div class="col-5">
+              <label for="inputState">Restaurant English name</label>
+              <input type="text" class="form-control" placeholder="餐廳英文名稱" name="name_en">
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-5">
+              <label for="inputState">Category</label>
+              <select id="inputState" class="form-control" placeholder="餐廳類型" name="category">
+                <option disabled selected>餐廳類型</option>
+                <option value="中東料理">中東料理</option>
+                <option value="義式餐廳">義式餐廳</option>
+                <option value="日本料理">日本料理</option>
+                <option value="酒吧">酒吧</option>
+                <option value="咖啡">咖啡</option>
+                <option value="泰式">泰式</option>
+                <option value="美式">美式</option>
+                <option value="法式">法式</option>
+                <option value="台式">台式</option>
+              </select>
+            </div>
+            <div class="col-5">
+              <label for="inputState">Restaurant Image Url</label>
+              <input type="text" class="form-control" placeholder="餐廳照片網址" name="image">
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-5">
+              <label for="inputState">Restaurant Address</label>
+              <input type="text" class="form-control" placeholder="餐廳地址" name="location">
+            </div>
+            <div class="col-5">
+              <label for="inputState">Restaurant Phone</label>
+              <input type="text" class="form-control" placeholder="餐廳電話" name="phone">
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-5">
+              <label for="inputState">Restaurant Google Map Url</label>
+              <input type="text" class="form-control" placeholder="餐廳Google Map網址" name="google_map">
+            </div>
+            <div class="col-5">
+              <label for="inputState">Restaurant Rating</label>
+              <input type="text" class="form-control" placeholder="餐廳評分" name="rating">
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-10">
+              <label for="inputState">Restaurant Description</label>
+              <input type="text" class="form-control" placeholder="餐廳簡介" name="description">
+            </div>
+          </div>
+          <div class="mt-3">
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
