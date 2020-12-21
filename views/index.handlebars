@@ -13,7 +13,6 @@
           </div>
         </div>
       </form>
-
     </div>
   </div>
 </div>
@@ -26,14 +25,29 @@
   <div class="row mb-3">
     <div class="col-4">
       <div class="operate">
-        <a class="btn btn-success" href="/new" role="button">新增餐廳</a>
+        <form action="/create" method="GET">
+          <button class="btn btn-success" type="submit">新增餐廳</button>
+        </form>
       </div>
+    </div>
+    <div class="col-7">
+      <form action="/sort" method="GET">
+        <select class="form-control" name="sort" id="sort" onchange="this.form.submit()"
+          style="cursor: pointer; text-align: center;">
+          <option>排序方式</option>
+          <option value="name_asc" {{#ifEquals sort "name_asc" }} selected {{/ifEquals}}>A->Z</option>
+          <option value="name_desc" {{#ifEquals sort "name_desc" }} selected {{/ifEquals}}>Z->A</option>
+          <option value="category" {{#ifEquals sort "category" }} selected {{/ifEquals}}>餐廳類型</option>
+          <option value="location" {{#ifEquals sort "location" }} selected {{/ifEquals}}>地區</option>
+        </select>
+      </form>
     </div>
   </div>
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
       <div class="card-columns">
         {{#each restaurant}}
+
         <a href="/restaurants/{{this._id}}" class="text-secondary">
           <div class="card mb-3">
             <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
@@ -59,6 +73,9 @@
       </div>
     </div>
 
+
+
+
     {{/each}}
   </div>
 </div>
@@ -76,7 +93,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-success" data-dismiss="modal">取消</button>
-        <form action="/restaurants/{{this._id}}/delete" method="POST">
+        <form action="/restaurants/{{this._id}}?_method=DELETE" method="POST">
           <button type="submit" class="btn btn-danger">確認刪除</button>
         </form>
       </div>

@@ -2,7 +2,7 @@
 採用 Node.js 和 Express 打造的餐廳清單網站，使用者可以在此站上查看餐廳訊息，並可透過餐廳名稱尋找餐廳資訊
 
 ## 專案畫面
-![餐廳清單](https://i.imgur.com/AKR7ts0.png)
+![餐廳清單](https://i.imgur.com/vBJL37T.jpg)
 ![新增餐廳](https://i.imgur.com/bi36LB0.png)
 ![餐廳資訊](https://i.imgur.com/sAvWvsB.png)
 ![刪除餐廳](https://i.imgur.com/yvj5uRs.png)
@@ -17,6 +17,7 @@
 - 新增餐廳
 - 修改餐廳的資訊
 - 刪除餐廳
+- 根據使用者需求排序
 
 ## 環境建置(prerequisites)
 - Node.js v10.15.0
@@ -24,6 +25,7 @@
 - Express-handlebars v5.2.0
 - mongoose v5.11.8
 - body-parser v1.19.0
+- method-override v3.0.0
 
 ## 安裝與執行步驟 (installation and execution)
 - 提醒: 以下動作需使用 terminal 或 Git Bash 指令

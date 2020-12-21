@@ -50,10 +50,17 @@ header {
   border-color: #ced4da;
 }
 
-.card {
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+.card, .search-bar-outer  {
+   box-shadow: 0 1px 15px 0px rgba(0, 0, 0, 0.3);
 }
 
+.card:hover, .search-bar-outer:hover, .btn:hover {
+  box-shadow: 0 1px 15px 0px rgba(0, 0, 0, 0.1);
+  transform: scale(0.99);
+}
+.btn {
+  box-shadow: 0 1px 15px 0px rgba(0, 0, 0, 0.2);
+}
 .card img{
   height: 180px;
 }
