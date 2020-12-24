@@ -11,7 +11,7 @@ const restSchema = new Schema({
   location: { type: String },
   phone: { type: String },
   google_map: { type: String },
-  rating: { type: String },
+  rating: { type: Number },
   description: { type: String }
 })
 
