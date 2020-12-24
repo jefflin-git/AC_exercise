@@ -43,11 +43,10 @@
       </form>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-10 col-12 mx-auto">
+  <div class="row d-flex justify-content-center">
+    <div class="col-10">
       <div class="card-columns">
         {{#each restaurant}}
-
         <a href="/restaurants/{{this._id}}" class="text-secondary">
           <div class="card mb-3">
             <div class="card-img-container">
@@ -55,34 +54,30 @@
             </div>
             <div class="card-body p-3">
               <h6 class="card-title mb-1">{{this.name}}</h6>
-
-              <div class="restaurant-category mb-1">
+              <div class="restaurant-category">
                 <i class="fas fa-utensils pr-2"></i> {{this.category}}
               </div>
+            </div>
+            <div class="mb-3 ml-3">
+              <span class="badge badge-pill badge-info font-weight-normal">
+                {{this.rating}}
+                <i class="fas fa-star fa-xs"></i>
+              </span>
+              <a href="/restaurants/{{this._id}}/edit"><span
+                  class="badge badge-pill badge-success font-weight-normal">修改</span></a>
+              <button type="button" data-toggle="modal" data-target="#delete-modal-{{this._id}}"
+                style="background: transparent; border:none; padding: 0px; outline: none; cursor: pointer"><span
+                  class="badge badge-pill badge-danger font-weight-normal">X</span>
+              </button>
+            </div>
+          </div>
         </a>
-        <div>
-          <span class="badge badge-pill badge-info font-weight-normal">
-            {{this.rating}}
-            <i class="fas fa-star fa-xs"></i>
-          </span>
-          <a href="/restaurants/{{this._id}}/edit"><span
-              class="badge badge-pill badge-success font-weight-normal">修改</span></a>
-          <button type="button" data-toggle="modal" data-target="#delete-modal-{{this._id}}"
-            style="background: transparent; border:none; padding: 0px; outline: none; cursor: pointer"><span
-              class="badge badge-pill badge-danger font-weight-normal">X</span>
-          </button>
-        </div>
+        {{/each}}
       </div>
     </div>
-
-
-
-
-    {{/each}}
   </div>
 </div>
-</div>
-</div>
+
 
 {{!-- delete modal --}}
 {{#each restaurant}}
