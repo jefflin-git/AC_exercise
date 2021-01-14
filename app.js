@@ -11,6 +11,7 @@ const RestList = require('./models/restaurant.js')
 const methodOverride = require('method-override')
 //引入路由器
 const routes = require('./routes/index.js')
+const session = require('express-session')
 
 // setting template engine
 app.engine('handlebars', exphdbs({ defaultlayout: 'main' }))
@@ -24,6 +25,13 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // 設定每一筆請求都會透過 methodOverride 進行前置處理
 app.use(methodOverride('_method'))
+
+app.use(session({
+  secret: 'restaurantSecret',
+  resave: false,
+  saveUninitialized: true
+}))
+
 
 //將傳入伺服器的request導入路由器
 app.use(routes)
