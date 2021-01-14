@@ -12,7 +12,13 @@ const restSchema = new Schema({
   phone: { type: String },
   google_map: { type: String },
   rating: { type: Number },
-  description: { type: String }
+  description: { type: String },
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    index: true,
+    require: true
+  }
 })
 
 module.exports = mongoose.model('RestList', restSchema)

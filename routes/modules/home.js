@@ -6,7 +6,8 @@ const RestList = require('../../models/restaurant.js')
 
 //瀏覽餐廳清單首頁
 router.get('/', (req, res) => {
-  RestList.find()
+  const userId = req.user._id
+  RestList.find({ userId })
     .lean()
     .then(restaurant => res.render('index', { restaurant }))
     .catch(error => console.log(error))

@@ -7,10 +7,11 @@ const RestList = require('../../models/restaurant.js')
 //搜尋
 router.get('/', (req, res) => {
   const keyword = req.query.keyword.trim()
+  const userId = req.user._id
   if (keyword.length === 0) {
     return res.redirect('/')
   }
-  RestList.find()
+  RestList.find({ userId })
     .lean()
     .then(restaurant => {
       const searchRestaurant = restaurant.filter(restaurant => restaurant.name.toLowerCase().includes(keyword.toLowerCase()))

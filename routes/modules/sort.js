@@ -15,6 +15,7 @@ handlebars.registerHelper('ifEquals', function (job, targetJob, options) {
 
 router.get('/', (req, res) => {
   const sort = req.query.sort
+  const userId = req.user._id
   let select = {}
   switch (sort) {
     case 'name_asc':
@@ -30,7 +31,7 @@ router.get('/', (req, res) => {
       select = { location: 'asc' }
       break
   }
-  RestList.find()
+  RestList.find({ userId })
     .lean()
     .sort(select)
     .then(restaurant => res.render('index', { restaurant, sort }))

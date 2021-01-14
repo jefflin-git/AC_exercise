@@ -13,18 +13,11 @@ handlebars.registerHelper('ifEquals', function (job, targetJob, options) {
   return options.inverse(this)
 })
 
-
-//瀏覽餐廳清單
-router.get('/', (req, res) => {
-  RestList.find()
-    .lean()
-    .then(restaurant => res.render('index', { restaurant }))
-    .catch(error => console.log(error))
-})
 //瀏覽餐廳細節
 router.get('/:restaurant_id', (req, res) => {
-  const id = req.params.restaurant_id
-  RestList.findById(id)
+  const userId = req.user._id
+  const _id = req.params.restaurant_id
+  RestList.findOne({ _id, userId })
     .lean()
     .then(restaurant => res.render('show', { restaurant }))
     .catch(error => console.log(error))
@@ -33,29 +26,31 @@ router.get('/:restaurant_id', (req, res) => {
 
 //修改頁面路由
 router.get('/:restaurant_id/edit', (req, res) => {
-  const id = req.params.restaurant_id
-  RestList.findById(id)
+  const userId = req.user._id
+  const _id = req.params.restaurant_id
+  RestList.findOne({ _id, userId })
     .lean()
     .then(restaurant => res.render('edit', { restaurant }))
     .catch(error => console.log(error))
 })
 //修改功能路由
 router.put('/:restaurant_id', (req, res) => {
-  const id = req.params.restaurant_id
+  const userId = req.user._id
+  const _id = req.params.restaurant_id
   const editRestaurant = req.body
-  RestList.findById(id)
+  RestList.findOne({ _id, userId })
     .then(restaurant => {
       restaurant = Object.assign(restaurant, editRestaurant)
       restaurant.save()
-      console.log(restaurant)
     })
-    .then(restaurant => res.redirect(`/restaurants/${id}`))
+    .then(restaurant => res.redirect(`/restaurants/${_id}`))
     .catch(error => console.log(error))
 })
 //刪除功能路由
 router.delete('/:restaurant_id', (req, res) => {
-  const id = req.params.restaurant_id
-  RestList.findById(id)
+  const userId = req.user._id
+  const _id = req.params.restaurant_id
+  RestList.findOne({ _id, userId })
     .then(restaurant => restaurant.remove())
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))

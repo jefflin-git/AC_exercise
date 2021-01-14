@@ -9,6 +9,7 @@ router.get('/', (req, res) => res.render('new'))
 //新增餐廳功能路由
 router.post('/', (req, res) => {
   const addRestaurant = req.body
+  addRestaurant.userId = req.user._id
   RestList.create(addRestaurant)
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
