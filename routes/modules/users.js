@@ -17,7 +17,6 @@ router.get('/register', (req, res) => {
   res.render('register')
 })
 
-//
 router.post('/register', (req, res) => {
   const { name, email, password, confirmPassword } = req.body
   User.findOne({ email })
@@ -40,6 +39,11 @@ router.post('/register', (req, res) => {
         .then(() => res.redirect('/'))
         .catch(err => console.log(err))
     })
+})
+
+router.get('/logout', (req, res) => {
+  req.logout()
+  res.redirect('/users/login')
 })
 
 //匯出路由器
