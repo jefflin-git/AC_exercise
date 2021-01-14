@@ -13,6 +13,7 @@ const methodOverride = require('method-override')
 const routes = require('./routes/index.js')
 const session = require('express-session')
 const usePassport = require('./config/passport')
+const locals = require('./middleware/locals')
 
 // setting template engine
 app.engine('handlebars', exphdbs({ defaultlayout: 'main' }))
@@ -34,6 +35,9 @@ app.use(session({
 }))
 
 usePassport(app)
+
+//設定本地變數
+locals(app)
 
 //將傳入伺服器的request導入路由器
 app.use(routes)
