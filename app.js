@@ -12,6 +12,7 @@ const methodOverride = require('method-override')
 //引入路由器
 const routes = require('./routes/index.js')
 const session = require('express-session')
+const usePassport = require('./config/passport')
 
 // setting template engine
 app.engine('handlebars', exphdbs({ defaultlayout: 'main' }))
@@ -32,6 +33,7 @@ app.use(session({
   saveUninitialized: true
 }))
 
+usePassport(app)
 
 //將傳入伺服器的request導入路由器
 app.use(routes)
