@@ -12,6 +12,7 @@ const search = require('./modules/search.js')
 const sort = require('./modules/sort.js')
 //引入create模組程式碼
 const create = require('./modules/create.js')
+const users = require('./modules/users')
 
 //將網址結構符合 / 字串的request導向home模組
 router.use('/', home)
@@ -23,6 +24,6 @@ router.use('/search', search)
 router.use('/sort', sort)
 //將網址結構符合 /new字串開頭的request導向search模組
 router.use('/create', create)
-
+router.use('/users', users)
 //匯出路由器
 module.exports = router

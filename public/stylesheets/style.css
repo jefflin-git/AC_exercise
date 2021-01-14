@@ -81,9 +81,9 @@ header {
   max-width: 210px;
 }
 
-.card-img-top::after {
+/* .card-img-top::after {
   background: url('https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5635/01.jpg');
-}
+} */
 
 .card-title{
   overflow:hidden;
