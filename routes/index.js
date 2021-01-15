@@ -14,7 +14,10 @@ const sort = require('./modules/sort.js')
 const create = require('./modules/create.js')
 //引入users模組程式碼
 const users = require('./modules/users')
+//引入auth模組程式碼
+const auth = require('./modules/auth')
 const { authenticator } = require('../middleware/auth')
+
 
 
 //將網址結構符合 /restaurants字串開頭的request導向restaurants模組
@@ -27,6 +30,8 @@ router.use('/sort', authenticator, sort)
 router.use('/create', authenticator, create)
 //將網址結構符合 /users字串開頭的request導向search模組
 router.use('/users', users)
+//將網址結構符合 /auth字串開頭的request導向search模組
+router.use('/auth', auth)
 //將網址結構符合 / 字串的request導向home模組
 router.use('/', authenticator, home)
 

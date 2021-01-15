@@ -1,7 +1,10 @@
 // require packages used in the project
 const express = require('express')
 const app = express()
-const port = 3000
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+const port = process.env.PORT
 const exphdbs = require('express-handlebars')
 //引入mongoose模組擋案
 require('./config/mongoose.js')
@@ -30,7 +33,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 
 app.use(session({
-  secret: 'restaurantSecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
