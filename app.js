@@ -14,6 +14,7 @@ const routes = require('./routes/index.js')
 const session = require('express-session')
 const usePassport = require('./config/passport')
 const locals = require('./middleware/locals')
+const flash = require('connect-flash')
 
 // setting template engine
 app.engine('handlebars', exphdbs({ defaultlayout: 'main' }))
@@ -35,6 +36,8 @@ app.use(session({
 }))
 
 usePassport(app)
+
+app.use(flash())
 
 //設定本地變數
 locals(app)
